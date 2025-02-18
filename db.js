@@ -5,10 +5,14 @@ require('dotenv').config();
 const mongoURL = process.env.MONGODB_URL
 
 //Setup MongoDB connection
-mongoose.connect(mongoURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+// mongoose.connect(mongoURL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+
+mongoose.connect(mongoURL)
+    .then(() => console.log('✅ Connected to MongoDB'))
+    .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 // Get the default connection
 // Mongoose maintains a default connection object representing the MongoDB connection.
